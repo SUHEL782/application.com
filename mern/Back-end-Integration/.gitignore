@@ -1,0 +1,8 @@
+/.env
+/node_modules
+<<<<<<< HEAD
+
+/etc/secrets/durable-stack-449615-n0-firebase-adminsdk-fbsvc-6377ce54f4.json
+=======
+/etc/secrete/durable-stack-449615-n0-firebase-adminsdk-fbsvc-6377ce54f4.json
+>>>>>>> 8acefd023bb69c31eca80221c9ecc664fa58ea53
