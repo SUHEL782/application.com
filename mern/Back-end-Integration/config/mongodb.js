@@ -1,21 +1,18 @@
 const mongoose = require('mongoose');
 
-
-
 const connectDB = async () => {
     try {
-        await mongoose.connect(process.env.MONGODB_URI).then(() => {
-            console.log(' Mongodb connected.....');
-        }).catch(err => {
-            console.error(err.message);
-            process.exit(1);
-        });
+        if (!process.env.MONGODB_URI) {
+            throw new Error('❌ MONGODB_URI is not defined in .env file');
+        }
+
+        await mongoose.connect(process.env.MONGODB_URI); 
+
+        console.log('✅ MongoDB connected successfully');
     } catch (err) {
-        console.error(err.message);
+        console.error('❌ MongoDB Connection Error:', err.message);
         process.exit(1);
     }
-}    
-
-/*mongodb+srv://workwithsuhel:erOMdtcMcn3BmHjS@application.wxs32.mongodb.net/app*/
+};
 
 module.exports = connectDB;
