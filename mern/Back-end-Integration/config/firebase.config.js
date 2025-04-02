@@ -6,5 +6,5 @@ const serviceCredentials = require('../etc/secrete/durable-stack-449615-n0-fireb
 fbAdmin.initializeApp({ credential: fbAdmin.credential.cert(serviceCredentials),
     storageBucket: "gs://durable-stack-449615-n0.firebasestorage.app"
  });
-
+ 
 module.exports = fbAdmin;

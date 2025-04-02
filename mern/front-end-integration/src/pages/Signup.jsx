@@ -14,7 +14,7 @@ function Signup() {
   const [success, setSuccess] = useState(""); 
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
+  const handleChange = (e) => {                        
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -24,7 +24,7 @@ function Signup() {
     setSuccess("");
 
     try {
-      const res = await axios.post("http://localhost:3000/user/signup", formData);
+      const res = await axios.post("http://localhost:5000/user/signup", formData);
       
       console.log("Signup Response:", res.data); 
 
