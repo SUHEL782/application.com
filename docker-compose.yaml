@@ -2,33 +2,34 @@ version: '3.8'
 
 services:
   backend:
-    build: ./backend  # Path to the backend Dockerfile
+    build: ./mern/Back-end-Integration  # Corrected path to the backend Dockerfile
     container_name: backend-app
     ports:
-      - "5000:5000"  # Backend runs on port 5000
+      - "5000:5000"
     environment:
       NODE_ENV: production
-      MONGO_URI: mongodb://mongo:27017/mydatabase  # Connect backend to MongoDB
+      MONGO_URI: mongodb://mongo:27017/mydatabase
     volumes:
-      - ./backend:/app  # Mount backend code
+      - ./mern/Back-end-Integration:/app  # Mount backend code
       - /app/node_modules  # Prevents overwriting node_modules
     depends_on:
-      - mongo  # Ensures MongoDB starts before backend
+      - mongo
     restart: always
 
   frontend:
-    build: ./frontend  # Path to the frontend Dockerfile
+    build: ./mern/front-end-integration  # Adjust frontend path if needed
     container_name: frontend-app
     ports:
-      - "3000:3000"  # Frontend runs on port 3000
+      - "3000:3000"
     depends_on:
-      - backend  # Ensures backend starts first
+      - backend
     environment:
-      - REACT_APP_API_URL=http://backend:5000  # Frontend should communicate with backend
+      - REACT_APP_API_URL=http://backend:5000
     volumes:
-      - ./frontend:/app  # Mount frontend code
+      - ./mern/front-end-integration:/app
       - /app/node_modules
     restart: always
+
 
   mongo:
     image: mongo
