@@ -26,7 +26,7 @@
 </ol>
 
 <ol start="2">
-  <li>Follow the setup documentation (if provided).</li>
+
   <li>Deploy and test in a <strong>controlled production-like environment</strong>.</li>
 </ol>
 
