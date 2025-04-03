@@ -24,7 +24,7 @@ function Signup() {
     setSuccess("");
 
     try {
-      const res = await axios.post("http://localhost:5000/user/signup", formData);
+      const res = await axios.post("http://34.47.210.197:5000/user/signup", formData);
       
       console.log("Signup Response:", res.data); 
 
