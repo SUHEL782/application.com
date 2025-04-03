@@ -11,7 +11,7 @@ RUN npm install --omit=dev  # Reduce image size by skipping dev dependencies
 # Copy the rest of the application
 COPY . .
 
-COPY .env .env
+
 
 # Expose the correct port
 EXPOSE 3000

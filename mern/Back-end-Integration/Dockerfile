@@ -16,6 +16,7 @@ COPY . .
 # Expose the port your backend app runs on
 EXPOSE 5000 
 
+COPY .env .env
 # Set environment variables (optional)
 ENV NODE_ENV=production
 
