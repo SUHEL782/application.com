@@ -16,7 +16,8 @@ COPY . .
 # Expose the port your backend app runs on
 EXPOSE 5000 
 
-
+# Set environment variables (optional)
+ENV NODE_ENV=production
 
 # Start the backend application
 CMD ["node", "app.js"]
