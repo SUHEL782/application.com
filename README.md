@@ -17,7 +17,7 @@ Ensure you have the following tools installed:
 ### 1️⃣ Clone the Repository
 Clone the project and navigate to its directory:
 ```bash
-git clone https://github.com/your-repo.git && cd your-repo
+git clone https://github.com/SUHEL782/application.com.git
 ```
 
 ### 2️⃣ Configure Environment Variables
@@ -43,10 +43,10 @@ docker build -t your-dockerhub-username/frontend-image ./frontend
 #### 🔹 Push Images to Docker Hub
 ```bash
 # Push Backend Image
-docker push your-dockerhub-username/backend-image:latest
+docker push back-end suhelkhan12/back-end:latest
 
 # Push Frontend Image
-docker push your-dockerhub-username/frontend-image:latest
+docker push front-end suhelkhan12/front-end:latest
 ```
 
 #### 🔹 Start the Application with Docker Compose
@@ -94,9 +94,9 @@ docker-compose down -v
 ---
 
 ## 📞 Contact Information
-📧 **Email:** your.email@example.com  
-🌐 **LinkedIn:** [linkedin.com/in/yourprofile](https://linkedin.com/in/yourprofile)  
-📂 **GitHub:** [github.com/your-repo](https://github.com/your-repo)  
+📧 **Email:** workwithsuhel@gmail.com  
+🌐 **LinkedIn:** [linkedin.com/in/yourprofile](https://www.linkedin.com/in/devops-engineer1/)  
+📂 **GitHub:** [github.com/your-repo](https://github.com/SUHEL782)  
 
 This guide ensures an efficient setup for a Dockerized MERN application while showcasing expertise in containerization and cloud-native development. 🚀
 
