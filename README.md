@@ -12,7 +12,7 @@ Ensure you have the following tools installed:
 
 ---
 
-## 🔹 Setup Instructions
+## 💩 Setup Instructions
 
 ### 1️⃣ Clone the Repository
 Clone the project and navigate to its directory:
@@ -31,7 +31,7 @@ JWT_SECRET=your_jwt_secret
 ### 3️⃣ Build and Deploy Docker Containers
 Each service runs in an independent container for modularity and scalability.
 
-#### 🔹 Build and Tag Docker Images
+#### 💩 Build and Tag Docker Images
 ```bash
 # Build Backend Image
 docker build -t suhelkhan12/back-end ./backend
@@ -40,7 +40,7 @@ docker build -t suhelkhan12/back-end ./backend
 docker build -t suhelkhan12/front-end ./frontend
 ```
 
-#### 🔹 Push Images to Docker Hub
+#### 💩 Push Images to Docker Hub
 ```bash
 # Push Backend Image
 docker push suhelkhan12/back-end:latest
@@ -49,12 +49,12 @@ docker push suhelkhan12/back-end:latest
 docker push suhelkhan12/front-end:latest
 ```
 
-#### 🔹 Start the Application with Docker Compose
+#### 💩 Start the Application with Docker Compose
 ```bash
 docker-compose up -d --build
 ```
 
-#### 🔹 Access Running Services
+#### 💩 Access Running Services
 - **Frontend:** [http://localhost:3000](http://localhost:3000)
 - **Backend API:** [http://localhost:5000](http://localhost:5000)
 
@@ -84,12 +84,12 @@ docker-compose down -v
 **Overview:** This project demonstrates best practices for deploying a MERN stack application using Docker, emphasizing scalability, modularization, and automation.
 
 **Core Responsibilities:**
-🔹 Develop RESTful APIs using Node.js and Express.js.  
-🔹 Build a responsive frontend with React.js.  
-🔹 Configure and optimize MongoDB in a containerized setup.  
-🔹 Implement CI/CD pipelines for efficient deployment.  
-🔹 Deploy on cloud platforms using Kubernetes.  
-🔹 Apply security best practices for authentication and environment management.  
+🔹 Design and implement Dockerized environments for scalable application deployment.  
+🔹 Configure and optimize CI/CD pipelines using Jenkins, GitHub Actions, or GitLab CI/CD.  
+🔹 Deploy and manage cloud-based infrastructures on AWS, Azure, or GCP.  
+🔹 Utilize Kubernetes for container orchestration and auto-scaling.  
+🔹 Implement security best practices in DevOps workflows.  
+🔹 Monitor system health using logging and monitoring tools like Prometheus, Grafana, or ELK Stack.  
 
 ---
 
