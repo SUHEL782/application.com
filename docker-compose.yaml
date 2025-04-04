@@ -1,34 +1,31 @@
-version: '3.8'
+version: "3.8"
 
 services:
   backend:
-    build: ./mern/Back-end-Integration
+    image: back-end11:latest
     container_name: backend-app
     ports:
       - "5000:5000"
     environment:
       NODE_ENV: production
-      MONGO_URI: mongodb+srv://workwithsuhel:erOMdtcMcn3BmHjS@application.wxs32.mongodb.net/app
-      
+      MONGO_URI: mongodb://admin:password@mongo:27017/app?authSource=admin
     volumes:
       - ./mern/Back-end-Integration:/app
-      - /app/node_modules
     depends_on:
       - mongo
     networks:
       - mern_network
     restart: always
+    expose:
+      - "5000"
 
   frontend:
-    build: ./mern/front-end-integration
+    image: front-end11:latest
     container_name: frontend-app
-    ports:
-      - "3000:3000"
     environment:
       - REACT_APP_API_URL=http://backend:5000
     volumes:
       - ./mern/front-end-integration:/app
-      - /app/node_modules
     depends_on:
       - backend
     networks:
