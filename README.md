@@ -17,7 +17,7 @@ Ensure you have the following tools installed:
 ### 1️⃣ Clone the Repository
 Clone the project and navigate to its directory:
 ```bash
-git clone https://github.com/SUHEL782/application.com.git
+git clone https://github.com/SUHEL782/application.com.git && cd application.com
 ```
 
 ### 2️⃣ Configure Environment Variables
@@ -34,19 +34,19 @@ Each service runs in an independent container for modularity and scalability.
 #### 🔹 Build and Tag Docker Images
 ```bash
 # Build Backend Image
-docker build -t your-dockerhub-username/backend-image ./backend
+docker build -t suhelkhan12/back-end ./backend
 
 # Build Frontend Image
-docker build -t your-dockerhub-username/frontend-image ./frontend
+docker build -t suhelkhan12/front-end ./frontend
 ```
 
 #### 🔹 Push Images to Docker Hub
 ```bash
 # Push Backend Image
-docker push back-end suhelkhan12/back-end:latest
+docker push suhelkhan12/back-end:latest
 
 # Push Frontend Image
-docker push front-end suhelkhan12/front-end:latest
+docker push suhelkhan12/front-end:latest
 ```
 
 #### 🔹 Start the Application with Docker Compose
@@ -95,8 +95,8 @@ docker-compose down -v
 
 ## 📞 Contact Information
 📧 **Email:** workwithsuhel@gmail.com  
-🌐 **LinkedIn:** [linkedin.com/in/yourprofile](https://www.linkedin.com/in/devops-engineer1/)  
-📂 **GitHub:** [github.com/your-repo](https://github.com/SUHEL782)  
+🌐 **LinkedIn:** [linkedin.com/in/devops-engineer1](https://www.linkedin.com/in/devops-engineer1/)  
+📂 **GitHub:** [github.com/SUHEL782](https://github.com/SUHEL782)  
 
 This guide ensures an efficient setup for a Dockerized MERN application while showcasing expertise in containerization and cloud-native development. 🚀
 
