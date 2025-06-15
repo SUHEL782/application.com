@@ -1,59 +1,62 @@
 # 🛒 E-commerce Application – MERN + DevOps on AWS
 
-A cloud-native, production-ready **e-commerce application** built with the **MERN stack**, containerized using **Docker**, orchestrated with **Kubernetes (AWS EKS)**, and deployed through a secure and automated **CI/CD pipeline** using **Jenkins** and **Terraform** for Infrastructure as Code (IaC).
+A cloud-native, production-ready e-commerce application built using the **MERN stack**, containerized with **Docker**, orchestrated via **Kubernetes on AWS EKS**, and fully automated using **Jenkins CI/CD** and **Terraform**.
 
 ---
 
-## 🚀 Project Overview
+### 👤 Author Info
 
-This project demonstrates end-to-end DevOps practices for deploying a scalable MERN web application:
-
-- ✅ Continuous Integration & Deployment (CI/CD)
-- 🐳 Docker-based Microservices
-- ☸️ Kubernetes Orchestration (EKS)
-- 🔐 JWT Authentication with Role-based Access
-- ⚙️ Infrastructure Automation (Terraform)
-- 📈 Monitoring & Logging (Prometheus, Grafana, CloudWatch)
+**Suhel Khan**  
+📍 Lucknow, Uttar Pradesh  
+📧 workwithsuhel@gmail.com  
+📞 +91 8931004042  
+🌐 [Portfolio](https://workwithsuhel.netlify.app)  
+🔗 [LinkedIn](https://www.linkedin.com/in/devops-engineer781/)  
+💻 [GitHub](https://github.com/SUHEL782)
 
 ---
 
 ## 🧩 Tech Stack
 
-| Category               | Technologies Used                            |
-|------------------------|-----------------------------------------------|
-| **Frontend**           | React.js, Redux, Axios                        |
-| **Backend**            | Node.js, Express.js                           |
-| **Database**           | MongoDB, Mongoose                             |
-| **Authentication**     | JWT, Bcrypt.js, Express Middleware            |
-| **Containerization**   | Docker                                        |
-| **Orchestration**      | Kubernetes (EKS)                              |
-| **CI/CD**              | Jenkins, GitHub                               |
-| **Infrastructure**     | Terraform (EC2, VPC, EKS, IAM, ELB)           |
-| **Monitoring**         | Prometheus, Grafana, AWS CloudWatch           |
-| **Cloud Provider**     | Amazon Web Services (AWS)                     |
+| Category             | Technologies Used                               |
+|----------------------|-------------------------------------------------|
+| **Frontend**         | React.js                                        |
+| **Backend**          | Node.js, Express.js                             |
+| **Database**         | MongoDB                                         |
+| **Authentication**   | JWT, Bcrypt, Express Middleware                 |
+| **Containerization** | Docker                                          |
+| **Orchestration**    | Kubernetes (AWS EKS)                            |
+| **CI/CD**            | Jenkins, GitHub                                 |
+| **IaC**              | Terraform (VPC, EKS, IAM, EC2, ELB)             |
+| **Monitoring**       | Prometheus, Grafana, AWS CloudWatch             |
+| **Cloud**            | Amazon Web Services (AWS)                       |
 
 ---
 
-## 🖼️ Screenshots
+## 📷 Screenshots
 
-> *(Place your actual screenshots in a folder named `/images`)*
+### 🔐 Signup Page  
+<img src="./images/signup.png" alt="Signup Page" width="400" />
 
-| Login Page | Signup Page | Homepage |
-|------------|-------------|----------|
-| ![Login](images/login.png) | ![Signup](images/signup.png) | ![Home](images/homepage.png) |
+### 🔑 Login Page  
+<img src="./images/login.png" alt="Login Page" width="400" />
+
+### 🏠 Homepage  
+<img src="./images/homepage.png" alt="Homepage" width="400" />
+
+> ⚠️ Make sure these images (`signup.png`, `login.png`, `homepage.png`) exist in the `/images/` folder of your repo.
 
 ---
 
 ## 📦 Key Features
 
-- 🧱 Modular MERN architecture
-- 🔁 End-to-end CI/CD with Jenkins
-- 🐳 Dockerized frontend/backend/mongo services
-- ☸️ Kubernetes deployment to AWS EKS
-- ⚙️ Infrastructure as Code with Terraform
+- 🚀 End-to-End CI/CD Pipeline with Jenkins
+- 🔐 Secure Login/Signup with JWT Authentication
+- 🐳 Dockerized Frontend & Backend Services
+- ☸️ Deployed on AWS EKS via Kubernetes
+- 🧱 Terraform for Infrastructure as Code
 - 📊 Monitoring with Prometheus & Grafana
-- 📥 Log aggregation with AWS CloudWatch
-- 🔐 JWT Authentication (Login & Signup)
+- 📁 Centralized Logging with AWS CloudWatch
 
 ---
 
@@ -61,13 +64,12 @@ This project demonstrates end-to-end DevOps practices for deploying a scalable M
 
 .
 ├── frontend/ # React-based frontend
-├── backend/ # Express API backend
-├── docker/ # Dockerfiles and scripts
+├── backend/ # Express.js backend API
+├── docker/ # Dockerfiles & scripts
 ├── k8s/ # Kubernetes manifests
-├── terraform/ # Terraform for AWS infrastructure
-├── Jenkinsfile # CI/CD pipeline configuration
-├── .github/workflows/ # Optional GitHub Actions
-├── images/ # Screenshots (login.png, etc.)
+├── terraform/ # Infrastructure as Code
+├── Jenkinsfile # Jenkins pipeline config
+├── images/ # Screenshots for README
 └── README.md # Project documentation
 
 yaml
@@ -78,27 +80,23 @@ Edit
 
 ## ⚙️ CI/CD Pipeline
 
-- **Version Control**: GitHub  
-- **CI/CD Tool**: Jenkins
+**CI/CD Tools:** GitHub, Jenkins, Docker, Kubernetes
 
-### Pipeline Workflow
-
-1. GitHub push triggers Jenkins.
-2. Jenkins builds and tests Docker images.
-3. Images are pushed to Docker Hub or AWS ECR.
-4. Kubernetes manifests are applied to the EKS cluster.
+1. Code pushed to GitHub triggers Jenkins
+2. Jenkins builds & pushes Docker images
+3. Kubernetes manifests are applied to EKS
+4. Services updated via rolling deployments
 
 ---
 
-## ☁️ Infrastructure Provisioning with Terraform
+## ☁️ Terraform Infrastructure
 
-Terraform automates creation of:
+Terraform provisions:
 
-- Custom VPC with subnets
-- EC2 for Jenkins or MongoDB
-- EKS Cluster with node groups
-- IAM Roles, Security Groups
-- Load Balancer for routing
+- VPC with public/private subnets
+- EKS Cluster + EC2 Worker Nodes
+- IAM Roles & Security Groups
+- ELB for frontend routing
 
 ```bash
 cd terraform/
@@ -109,78 +107,57 @@ bash
 Copy
 Edit
 cd k8s/
-
-kubectl apply -f mongo-deployment.yaml
 kubectl apply -f backend-deployment.yaml
 kubectl apply -f frontend-deployment.yaml
+kubectl apply -f mongo-deployment.yaml
 📊 Monitoring & Logging
 Tool	Purpose
-Prometheus	Kubernetes metrics scraping
-Grafana	Custom dashboards (CPU, memory, latency)
-CloudWatch	Log aggregation and alerts
+Prometheus	Metrics collection
+Grafana	Dashboards/Visualizations
+CloudWatch	Logs and AWS metrics
 
-🔮 Future Enhancements
-✅ Migrate to Helm charts for Kubernetes
+Metrics include:
 
-✅ Enable HTTPS with cert-manager + Ingress + TLS
+CPU/Memory Usage
 
-✅ Use AWS ECR for container image storage
+Request Latency
 
-✅ Automate MongoDB backups
+Pod Health & Uptime
 
-✅ Add test automation to CI pipeline
+🧠 Future Enhancements
+✅ Convert K8s YAMLs into Helm charts
 
-✅ Add GitHub Actions for additional CI/CD
+✅ Setup HTTPS via Ingress + TLS
 
-✅ Add cloud architecture diagram
+✅ Store images on AWS ECR
 
-🧑‍💻 Local Development Setup
+✅ Add unit/integration tests
+
+✅ Backup MongoDB automatically
+
+✅ Create system architecture diagram
+
+🧑‍💻 Local Development
 bash
 Copy
 Edit
-# Clone the repository
 git clone https://github.com/SUHEL782/application.com.git
 cd application.com
-
-# Build and run services locally
 docker-compose up --build
-🙋‍♂️ About Me
-Suhel Khan
-🚩 Lucknow, Uttar Pradesh | 📧 workwithsuhel@gmail.com | 📱 +91 8931004042
-🌐 Portfolio
-🔗 LinkedIn | GitHub
-
-I'm a DevOps Engineer passionate about automation, scalable infrastructure, and cloud-native application delivery. I enjoy building and optimizing CI/CD pipelines, working with Kubernetes, and using tools like Terraform to bring infrastructure under version control.
-
 🤝 Contributing
 Contributions are welcome!
-Feel free to fork this repository, make changes, and open a pull request.
+Fork the repo, make your changes, and open a pull request.
 
 📄 License
-This project is licensed under the MIT License.
-See the LICENSE file for more details.
+Licensed under the MIT License. See LICENSE for full details.
 
-yaml
+markdown
 Copy
 Edit
 
----
+Would you like me to now:
+- Generate a **Jenkinsfile**?
+- Draw an **AWS architecture diagram**?
+- Create a **Helm chart structure**?
 
-### ✅ Next Steps (Optional Enhancements)
-
-Would you like me to help you add:
-
-- ✅ Architecture diagram (AWS + EKS + Jenkins)?
-- ✅ Helm chart for your Kubernetes manifests?
-- ✅ Unit test boilerplates (Jest for React, Mocha for Node)?
-- ✅ GitHub Actions workflow to replace or enhance Jenkins?
-
-Let me know what you’d like next!
-
-
-
-
-
-
-
-
+Let me know — I’ll build it for you.
