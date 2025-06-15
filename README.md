@@ -1,163 +1,174 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  MERN E-commerce with DevOps
-</head>
-<body style="font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; background-color: #f7f7f7; color: #333;">
-  <h1>🛒 E-commerce Application – MERN + DevOps on AWS</h1>
-  <p>
-    A cloud-native, scalable e-commerce web application built using the MERN stack, fully containerized with Docker,
-    deployed to AWS EKS using Kubernetes, and managed via a robust CI/CD pipeline and Infrastructure as Code (IaC) with Terraform.
-  </p>
+# 🛒 MERN E-commerce with DevOps on AWS
 
-  <h2>🚀 Project Overview</h2>
-  <ul>
-    <li>Continuous Integration & Deployment (CI/CD)</li>
-    <li>Containerization and Orchestration</li>
-    <li>Infrastructure Automation</li>
-    <li>Monitoring and Logging</li>
-    <li>User Authentication (Login / Signup)</li>
-  </ul>
+A cloud-native, scalable **E-commerce Web Application** built using the **MERN stack**, fully containerized with **Docker**, deployed to **AWS EKS** using **Kubernetes**, and managed via a robust **CI/CD pipeline** and **Infrastructure as Code (IaC)** with **Terraform**.
 
-  <h2>🧩 Tech Stack</h2>
-  <table border="1" cellpadding="10">
-    <tr><th>Category</th><th>Technologies Used</th></tr>
-    <tr><td>Frontend</td><td>React.js</td></tr>
-    <tr><td>Backend</td><td>Node.js, Express.js</td></tr>
-    <tr><td>Database</td><td>MongoDB</td></tr>
-    <tr><td>Authentication</td><td>JWT, Bcrypt, Express Middleware</td></tr>
-    <tr><td>Containerization</td><td>Docker</td></tr>
-    <tr><td>Orchestration</td><td>Kubernetes (AWS EKS)</td></tr>
-    <tr><td>CI/CD</td><td>Jenkins, GitHub</td></tr>
-    <tr><td>IaC</td><td>Terraform (EC2, VPC, EKS, IAM, ELB)</td></tr>
-    <tr><td>Monitoring</td><td>Prometheus, Grafana, AWS CloudWatch</td></tr>
-    <tr><td>Cloud Provider</td><td>AWS</td></tr>
-  </table>
+---
 
-  <h2>🖼️ Screenshots</h2>
-  
-  <h3>🔐 Signup Page</h3>
-  <img src="images/signup.png" alt="Signup Page" style="width: 600px; border: 1px solid #ccc;" />
+## 🚀 Project Overview
 
-  <h3>🔓 Login Page</h3>
-  <img src="images/login.png" alt="Login Page" style="width: 600px; border: 1px solid #ccc;" />
+- 🔁 End-to-end **CI/CD pipeline** with Jenkins & GitHub
+- 📦 Containerized frontend/backend using Docker
+- ☸️ Kubernetes deployment on AWS EKS
+- 🧰 Infrastructure provisioning with Terraform
+- 📊 Real-time monitoring with Prometheus & Grafana
+- 📥 Centralized logging with AWS CloudWatch
+- 🔐 Secure login/signup using JWT Authentication
 
-  <h3>🏠 Homepage</h3>
-  <img src="images/homepage.png" alt="Homepage" style="width: 600px; border: 1px solid #ccc;" />
+---
 
-  <h2>📦 Key Features</h2>
-  <ul>
-    <li>🧱 Scalable MERN stack architecture</li>
-    <li>🔁 End-to-end CI/CD pipeline with Jenkins</li>
-    <li>🐳 Dockerized frontend and backend services</li>
-    <li>☸️ Kubernetes deployment on AWS EKS</li>
-    <li>🧰 Infrastructure provisioned using Terraform</li>
-    <li>📊 Real-time monitoring with Prometheus & Grafana</li>
-    <li>📥 Centralized logging with AWS CloudWatch</li>
-    <li>🔐 Secure Login & Signup with JWT Authentication</li>
-  </ul>
+## 🧩 Tech Stack
 
-  <h2>📁 Project Structure</h2>
-  <pre>
+| Category          | Technologies Used                              |
+|-------------------|--------------------------------------------------|
+| Frontend          | React.js                                         |
+| Backend           | Node.js, Express.js                              |
+| Database          | MongoDB                                          |
+| Authentication    | JWT, Bcrypt, Express Middleware                  |
+| Containerization  | Docker                                           |
+| Orchestration     | Kubernetes (AWS EKS)                             |
+| CI/CD             | Jenkins, GitHub                                  |
+| Infrastructure    | Terraform (EC2, VPC, EKS, IAM, ELB)              |
+| Monitoring        | Prometheus, Grafana, AWS CloudWatch              |
+| Cloud Provider    | AWS                                              |
+
+---
+
+## 🖼️ Screenshots
+
+### 🔐 Signup Page  
+![Signup](images/signup.png)
+
+### 🔓 Login Page  
+![Login](images/login.png)
+
+### 🏠 Homepage  
+![Homepage](images/homepage.png)
+
+---
+
+## 📦 Key Features
+
+- 🧱 Scalable MERN architecture
+- 🔁 Automated CI/CD pipeline
+- 🐳 Dockerized microservices
+- ☸️ Kubernetes on AWS EKS
+- 🧰 IaC using Terraform
+- 📊 Monitoring via Grafana/Prometheus
+- 📥 Logging with AWS CloudWatch
+- 🔐 JWT-based authentication
+
+---
+
+## 📁 Project Structure
+
 .
-├── frontend/              # React frontend
-├── backend/               # Express backend API
-├── docker/                # Dockerfiles
-├── k8s/                   # Kubernetes manifests
-├── terraform/             # Infrastructure definitions
-├── Jenkinsfile            # Jenkins pipeline
-├── images/                # Screenshots
-└── README.md              # Project documentation
-  </pre>
+├── frontend/ # React frontend
+├── backend/ # Express backend API
+├── docker/ # Dockerfiles
+├── k8s/ # Kubernetes manifests
+├── terraform/ # Infrastructure definitions
+├── Jenkinsfile # Jenkins pipeline
+├── images/ # Screenshots
+└── README.md # Project documentation
 
-  <h2>⚙️ CI/CD Pipeline</h2>
-  <ul>
-    <li><strong>Source:</strong> GitHub</li>
-    <li><strong>Build & Deploy:</strong> Jenkins</li>
-    <li><strong>Pipeline:</strong>
-      <ol>
-        <li>Push to GitHub triggers Jenkins</li>
-        <li>Build Docker images (frontend + backend)</li>
-        <li>Push images to Docker Hub or ECR</li>
-        <li>Apply Kubernetes manifests to EKS</li>
-      </ol>
-    </li>
-  </ul>
+yaml
+Copy
+Edit
 
-  <h2>☁️ Infrastructure Setup (Terraform)</h2>
-  <ul>
-    <li>VPC with public/private subnets</li>
-    <li>EC2 (Jenkins, MongoDB optional)</li>
-    <li>EKS Cluster + Worker Nodes</li>
-    <li>IAM Roles, Security Groups</li>
-    <li>Elastic Load Balancer</li>
-  </ul>
-  <pre>
+---
+
+## ⚙️ CI/CD Pipeline
+
+- **Source Control**: GitHub
+- **CI/CD Tool**: Jenkins
+
+### Pipeline Flow:
+1. GitHub push triggers Jenkins
+2. Build Docker images (frontend & backend)
+3. Push images to Docker Hub / AWS ECR
+4. Deploy with `kubectl` to AWS EKS
+
+---
+
+## ☁️ Infrastructure Setup (Terraform)
+
+Provision infrastructure using:
+- VPC with public/private subnets
+- EC2 (Jenkins, optional MongoDB)
+- EKS Cluster + Worker Nodes
+- IAM roles, security groups
+- Elastic Load Balancer
+
+### Commands:
+```bash
 cd terraform/
 terraform init
 terraform apply
-  </pre>
+🚀 Kubernetes Deployment
+Apply manifests for backend, frontend, and MongoDB:
 
-  <h2>🚀 Deployment (Kubernetes)</h2>
-  <pre>
+bash
+Copy
+Edit
 cd k8s/
 kubectl apply -f backend-deployment.yaml
 kubectl apply -f frontend-deployment.yaml
 kubectl apply -f mongo-deployment.yaml
-  </pre>
+📊 Monitoring & Logging
+Tool	Purpose
+Prometheus	Scrape metrics from Kubernetes
+Grafana	Visualize metrics and trends
+AWS CloudWatch	Centralized logging for AWS
 
-  <h2>📊 Monitoring & Logging</h2>
-  <table border="1" cellpadding="10">
-    <tr><th>Tool</th><th>Purpose</th></tr>
-    <tr><td>Prometheus</td><td>Scrapes Kubernetes metrics</td></tr>
-    <tr><td>Grafana</td><td>Visualizes metrics</td></tr>
-    <tr><td>CloudWatch</td><td>AWS-native log aggregation</td></tr>
-  </table>
+Dashboards include:
 
-  <h3>Dashboards show:</h3>
-  <ul>
-    <li>CPU/Memory usage</li>
-    <li>Request latency</li>
-    <li>Pod/container health</li>
-    <li>Replica count</li>
-  </ul>
+CPU/Memory usage
 
-  <h2>🧠 Future Improvements</h2>
-  <ul>
-    <li>Convert Kubernetes manifests to Helm Charts</li>
-    <li>Enable HTTPS with Ingress + cert-manager</li>
-    <li>Switch image registry to AWS ECR</li>
-    <li>MongoDB backups automation</li>
-    <li>JWT route protection for frontend</li>
-    <li>Unit/integration tests in CI pipeline</li>
-    <li>Add system architecture diagram (VPC, EKS, Jenkins)</li>
-  </ul>
+Request latency
 
-  <h2>🧑‍💻 Local Development</h2>
-  <pre>
+Pod health status
+
+Replica counts
+
+🧠 Future Improvements
+Convert K8s YAMLs to Helm Charts
+
+Enable HTTPS with Ingress + cert-manager
+
+Move image hosting to AWS ECR
+
+Automate MongoDB backups
+
+Add JWT route protection on frontend
+
+Integrate unit/integration tests into pipeline
+
+Add system architecture diagram
+
+🧑‍💻 Local Development
+bash
+Copy
+Edit
 git clone https://github.com/SUHEL782/application.com.git
 cd application.com
 docker-compose up --build
-  </pre>
+🤝 Contributing
+Contributions are welcome! Feel free to fork, enhance, and submit a pull request.
 
-  <h2>🤝 Contributing</h2>
-  <p>Feel free to fork, enhance and submit a pull request!</p>
+📄 License
+This project is licensed under the MIT License.
 
-  <h2>📄 License</h2>
-  <p>This project is licensed under the MIT License.</p>
+👨‍💻 Author
+Suhel Khan
+📍 Uttar Pradesh (Lucknow)
+📧 workwithsuhel@gmail.com
+📞 +91 8931004042
+🌐 Portfolio
+🔗 LinkedIn
+💻 GitHub
 
-  <h2>👨‍💻 Author</h2>
-  <p><strong>SUHEL KHAN</strong></p>
-  <ul>
-    <li>📍 Uttar Pradesh (Lucknow)</li>
-    <li>📧 workwithsuhel@gmail.com</li>
-    <li>📞 +91 8931004042</li>
-    <li>🌐 <a href="https://workwithsuhel.netlify.app/">Portfolio</a></li>
-    <li>🔗 <a href="https://www.linkedin.com/in/devops-engineer781/">LinkedIn</a></li>
-    <li>💻 <a href="https://github.com/SUHEL782">GitHub</a></li>
-  </ul>
+Built with ❤️ using MERN Stack & DevOps Best Practices
 
-</body>
-</html>
+yaml
+Copy
+Edit
