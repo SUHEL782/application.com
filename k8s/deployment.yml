@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mern-deploy
+  namespace: bankapp-namespace
+  labels:
+    app: mern-deploy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mern-deploy
+  template:
+    metadata:
+      labels:
+        app: mern-deploy
+    spec:
+      containers:
+      - name: mern-app
+        image: suhelkhan12/bankapp-eks:v2
+        ports:
+        - containerPort: 8080
+        env:
+        - name: MONGODB_URI
+          valueFrom:
+            secretKeyRef:
+              name: mongo-secret
+              key: MONGODB_URI
+        - name: JWT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: mongo-secret
+              key: JWT_SECRET
+        - name: RAZORPAY_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: mongo-secret
+              key: RAZORPAY_KEY_ID
+        - name: RAZORPAY_KEY_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: mongo-secret
+              key: RAZORPAY_KEY_SECRET
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
+        # Uncomment if your app has health endpoints
+        # readinessProbe:
+        #   httpGet:
+        #     path: /health
+        #     port: 8080
+        #   initialDelaySeconds: 10
+        #   periodSeconds: 5
+        # livenessProbe:
+        #   httpGet:
+        #     path: /health
+        #     port: 8080
+        #   initialDelaySeconds: 30
+        #   periodSeconds: 10
