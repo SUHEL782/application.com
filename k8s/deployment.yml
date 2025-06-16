@@ -61,3 +61,11 @@ spec:
         #     port: 8080
         #   initialDelaySeconds: 30
         #   periodSeconds: 10
+  #-------------------------------------------------------------------------------------------------------------
+#  you can add accourding to your needs
+#   MONGODB_URI=mongodb+srv://workwithsuhel:erOMdtcMcn3BmHjS@application.wxs32.mongodb.net/app
+
+#   JWT_SECRET = 1231455
+# RAZORPAY_KEY_ID=rzp_test_cAa3gCF0eP8i4R,
+# RAZORPAY_KEY_SECRET=oXo3dmmWmWJhvg6AuEU6etJ7
+# ------------------------------------------------------------------------------------------------------
