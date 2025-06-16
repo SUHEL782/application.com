@@ -1,1 +1,6 @@
-write some namespace  as per your requirment
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: mern-namespace
+  labels:
+    name: mern-namespace
