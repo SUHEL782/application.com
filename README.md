@@ -1,10 +1,19 @@
 # 🛒 MERN E-commerce with DevOps on AWS
 
 A cloud-native, scalable **E-commerce Web Application** built using the **MERN stack**, fully containerized with **Docker**, deployed to **AWS EKS** using **Kubernetes**, and managed via a robust **CI/CD pipeline** and **Infrastructure as Code (IaC)** with **Terraform**.
- # some concept
-AutoScalling and Auto-healing 
+ # AutoScalling and Auto-healing 
 Autoscaling and auto-healing are related but distinct features. Autoscaling dynamically adjusts the number of computing resources (like servers) to match the workload, while auto-healing replaces unhealthy instances with new ones, ensuring continuous operation. Essentially, autoscaling adds more resources when needed and auto-healing replaces failed resources
-
+# Keeping Containers Running (Best Practices):
+Implement Liveness and Readiness Probes:
+These probes help Kubernetes detect and handle container failures automatically. 
+Use Container Restart Policies:
+Configure the restartPolicy in your pod definition to control how Kubernetes handles container restarts. 
+Enable Detailed Logging:
+Collect and analyze logs from all containers to quickly identify and resolve issues. 
+Monitor Resource Usage:
+Pay attention to resource consumption to prevent issues caused by resource exhaustion. 
+Ensure Graceful Shutdown:
+Implement a mechanism for your containers to handle termination signals gracefully when the pod is being deleted. 
 ---
 
 ## 🚀 Project Overview
