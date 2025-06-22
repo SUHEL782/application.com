@@ -80,7 +80,7 @@ Secrets in code	Use Kubernetes Secrets or Sealed Secrets instead of plaintext.
 
 ---
 
-## 📁 Project Structure
+# 📁 Project Structure
 
 .
 ├── frontend/ # React frontend
