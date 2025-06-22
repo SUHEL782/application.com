@@ -3,14 +3,14 @@
 A cloud-native, scalable, and secure e-commerce web application built using the MERN stack, fully containerized with Docker, deployed to AWS EKS using Kubernetes, and managed through a robust CI/CD pipeline with Jenkins and Infrastructure as Code (IaC) using Terraform.
 
 ---
-🛠 Common Problems & Solutions
-🐳 Docker
+# 🛠 Common Problems & Solutions
+#🐳 Docker
 Problem	Solution
 Container exits immediately	Ensure the main process runs in the foreground.
 Port binding errors	Check for conflicts using docker ps and free up ports.
 Can't connect between containers	Use Docker Compose with proper service names and networks.
 Large image size	Use multi-stage builds and Alpine-based images.
-
+---
 # ☸️ Kubernetes
 Problem	Solution
 CrashLoopBackOff	Check container logs and probe configurations.
