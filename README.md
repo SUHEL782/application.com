@@ -211,6 +211,6 @@ Suhel Khan
 📍 Uttar Pradesh, Lucknow
 📧 workwithsuhel@gmail.com
 📞 +91 8931004042
-🌐 Portfolio
+🌐 https://workwithsuhel.netlify.app
 🔗 LinkedIn
 💻 GitHub
