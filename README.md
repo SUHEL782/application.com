@@ -1,6 +1,7 @@
 # 🛒 MERN E-commerce with DevOps on AWS
 
 A cloud-native, scalable **E-commerce Web Application** built using the **MERN stack**, fully containerized with **Docker**, deployed to **AWS EKS** using **Kubernetes**, and managed via a robust **CI/CD pipeline** and **Infrastructure as Code (IaC)** with **Terraform**.
+ # some concept
 AutoScalling and Auto-healing 
 Autoscaling and auto-healing are related but distinct features. Autoscaling dynamically adjusts the number of computing resources (like servers) to match the workload, while auto-healing replaces unhealthy instances with new ones, ensuring continuous operation. Essentially, autoscaling adds more resources when needed and auto-healing replaces failed resources
 
