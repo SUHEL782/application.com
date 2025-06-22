@@ -1,75 +1,77 @@
 # 🛒 MERN E-commerce with DevOps on AWS
 
-A cloud-native, scalable **E-commerce Web Application** built using the **MERN stack**, fully containerized with **Docker**, deployed to **AWS EKS** using **Kubernetes**, and managed via a robust **CI/CD pipeline** and **Infrastructure as Code (IaC)** with **Terraform**.
- # AutoScalling and Auto-healing 
-Autoscaling and auto-healing are related but distinct features. Autoscaling dynamically adjusts the number of computing resources (like servers) to match the workload, while auto-healing replaces unhealthy instances with new ones, ensuring continuous operation. Essentially, autoscaling adds more resources when needed and auto-healing replaces failed resources
-# Keeping Containers Running (Best Practices):
-Implement Liveness and Readiness Probes:
-These probes help Kubernetes detect and handle container failures automatically. 
-Use Container Restart Policies:
-Configure the restartPolicy in your pod definition to control how Kubernetes handles container restarts. 
-Enable Detailed Logging:
-Collect and analyze logs from all containers to quickly identify and resolve issues. 
-Monitor Resource Usage:
-Pay attention to resource consumption to prevent issues caused by resource exhaustion. 
-Ensure Graceful Shutdown:
-Implement a mechanism for your containers to handle termination signals gracefully when the pod is being deleted. 
+A production-ready, cloud-native e-commerce web application built with the MERN stack. Fully containerized using Docker, deployed to AWS EKS with Kubernetes, and managed via a CI/CD pipeline using Jenkins and Infrastructure as Code (Terraform). Includes monitoring, logging, and security best practices.
+
 ---
-#Container management
-To effectively manage Docker containers, you can utilize the Docker CLI for tasks like starting, stopping, and inspecting containers, as well as managing images, networks, and volumes. Additionally, Docker Compose simplifies the management of multi-container applications by defining and orchestrating them using a YAML file
----
+
 ## 🚀 Project Overview
 
-- 🔁 End-to-end **CI/CD pipeline** with Jenkins & GitHub
-- 📦 Containerized frontend/backend using Docker
-- ☸️ Kubernetes deployment on AWS EKS
-- 🧰 Infrastructure provisioning with Terraform
-- 📊 Real-time monitoring with Prometheus & Grafana
-- 📥 Centralized logging with AWS CloudWatch
-- 🔐 Secure login/signup using JWT Authentication
+- ✅ CI/CD pipeline via **Jenkins** & **GitHub**
+- 🐳 Fully containerized with **Docker**
+- ☸️ Kubernetes deployment on **AWS EKS**
+- 🧰 Infra provisioning using **Terraform**
+- 📊 Monitoring via **Prometheus** & **Grafana**
+- 📥 Logging with **AWS CloudWatch**
+- 🔐 Secure **JWT**-based authentication
 
 ---
 
 ## 🧩 Tech Stack
 
-| Category          | Technologies Used                              |
-|-------------------|--------------------------------------------------|
-| Frontend          | React.js                                         |
-| Backend           | Node.js, Express.js                              |
-| Database          | MongoDB                                          |
-| Authentication    | JWT, Bcrypt, Express Middleware                  |
-| Containerization  | Docker                                           |
-| Orchestration     | Kubernetes (AWS EKS)                             |
-| CI/CD             | Jenkins, GitHub                                  |
-| Infrastructure    | Terraform (EC2, VPC, EKS, IAM, ELB)              |
-| Monitoring        | Prometheus, Grafana, AWS CloudWatch              |
-| Cloud Provider    | AWS                                              |
+| Category        | Technologies Used                                 |
+|----------------|----------------------------------------------------|
+| Frontend        | React.js                                           |
+| Backend         | Node.js, Express.js                                |
+| Database        | MongoDB                                            |
+| Authentication  | JWT, Bcrypt, Express Middleware                    |
+| Containerization| Docker                                             |
+| Orchestration   | Kubernetes (AWS EKS)                               |
+| CI/CD           | Jenkins, GitHub                                    |
+| Infrastructure  | Terraform (EC2, VPC, EKS, IAM, ELB)                |
+| Monitoring      | Prometheus, Grafana, AWS CloudWatch               |
+| Cloud Provider  | AWS                                                |
 
 ---
 
-## 🖼️ Screenshots
+## 🛠 Common Problems & Solutions
 
-### 🔐 Signup Page  
-![Signup](images/signup.png)
+### 🔧 Docker
+- **Problem:** Container fails on startup  
+  **Solution:** Check logs using `docker logs <container_id>` and ensure ports/env variables are correctly set.
 
-### 🔓 Login Page  
-![Login](images/login.png)
+- **Problem:** Docker network issues in multi-container setups  
+  **Solution:** Use `docker-compose` to define networks explicitly.
 
-### 🏠 Homepage  
-![Homepage](images/homepage.png)
+### 🔧 Kubernetes
+- **Problem:** Pods crash repeatedly  
+  **Solution:** Use `kubectl describe pod <pod-name>` to check `Events`, and add **Liveness/Readiness probes**.
+
+- **Problem:** Service not accessible externally  
+  **Solution:** Use **LoadBalancer** service type or configure **Ingress Controller** with external DNS.
+
+### 🔧 Terraform
+- **Problem:** Resource already exists error  
+  **Solution:** Run `terraform import` or clean state with `terraform state rm`.
+
+- **Problem:** AWS rate limits  
+  **Solution:** Use `retryable_errors` and backoff settings in provider block.
+
+### 🔧 Jenkins CI/CD
+- **Problem:** Jenkinsfile fails at Docker build  
+  **Solution:** Ensure Docker is installed on Jenkins agent and Docker socket is accessible.
+
+- **Problem:** Environment variables not set  
+  **Solution:** Use `withCredentials` or set them in Jenkins pipeline config properly.
 
 ---
 
-## 📦 Key Features
+## 🖼️ UI Snapshots
 
-- 🧱 Scalable MERN architecture
-- 🔁 Automated CI/CD pipeline
-- 🐳 Dockerized microservices
-- ☸️ Kubernetes on AWS EKS
-- 🧰 IaC using Terraform
-- 📊 Monitoring via Grafana/Prometheus
-- 📥 Logging with AWS CloudWatch
-- 🔐 JWT-based authentication
+- 🔐 Signup Page  
+- 🔓 Login Page  
+- 🏠 Homepage  
+
+(*Located in the `images/` folder*)
 
 ---
 
@@ -80,9 +82,9 @@ To effectively manage Docker containers, you can utilize the Docker CLI for task
 ├── backend/ # Express backend API
 ├── docker/ # Dockerfiles
 ├── k8s/ # Kubernetes manifests
-├── terraform/ # Infrastructure definitions
-├── Jenkinsfile # Jenkins pipeline
-├── images/ # Screenshots
+├── terraform/ # Infrastructure as Code
+├── Jenkinsfile # CI/CD pipeline config
+├── images/ # UI Screenshots
 └── README.md # Project documentation
 
 yaml
@@ -93,73 +95,88 @@ Edit
 
 ## ⚙️ CI/CD Pipeline
 
-- **Source Control**: GitHub
-- **CI/CD Tool**: Jenkins
+- **Source Control:** GitHub  
+- **CI/CD Tool:** Jenkins
 
 ### Pipeline Flow:
 1. GitHub push triggers Jenkins
-2. Build Docker images (frontend & backend)
-3. Push images to Docker Hub / AWS ECR
-4. Deploy with `kubectl` to AWS EKS
+2. Build Docker images (frontend/backend)
+3. Push to Docker Hub / AWS ECR
+4. Deploy to EKS using `kubectl`
 
 ---
 
-## ☁️ Infrastructure Setup (Terraform)
+## ☁️ Infrastructure Setup with Terraform
 
-Provision infrastructure using:
-- VPC with public/private subnets
-- EC2 (Jenkins, optional MongoDB)
-- EKS Cluster + Worker Nodes
-- IAM roles, security groups
-- Elastic Load Balancer
+Provision the infrastructure:
 
-### Commands:
 ```bash
 cd terraform/
 terraform init
 terraform apply
-🚀 Kubernetes Deployment
-Apply manifests for backend, frontend, and MongoDB:
+Resources Created:
+
+VPC with subnets
+
+EC2 (Jenkins, MongoDB optional)
+
+EKS Cluster + Nodes
+
+IAM Roles, Security Groups
+
+Load Balancer
+
+☸️ Kubernetes Deployment
+Deploy app components to AWS EKS:
 
 bash
 Copy
 Edit
 cd k8s/
+kubectl apply -f mongo-deployment.yaml
 kubectl apply -f backend-deployment.yaml
 kubectl apply -f frontend-deployment.yaml
-kubectl apply -f mongo-deployment.yaml
 📊 Monitoring & Logging
 Tool	Purpose
-Prometheus	Scrape metrics from Kubernetes
-Grafana	Visualize metrics and trends
-AWS CloudWatch	Centralized logging for AWS
+Prometheus	Metrics collection from pods
+Grafana	Metric visualization dashboards
+AWS CloudWatch	Centralized logs from containers
 
-Dashboards include:
+Dashboards:
 
 CPU/Memory usage
 
-Request latency
+Pod health & availability
 
-Pod health status
+HTTP request latency
 
-Replica counts
+♻️ Container Management Best Practices
+Probes: Use Liveness & Readiness probes
 
-🧠 Future Improvements
-Convert K8s YAMLs to Helm Charts
+Restart Policies: Define restartPolicy: Always or suitable config
 
-Enable HTTPS with Ingress + cert-manager
+Logs: Use stdout and stderr for all logs
 
-Move image hosting to AWS ECR
+Monitoring: Watch pod resource limits to avoid OOM kills
+
+Shutdown Handling: Gracefully capture SIGTERM in backend
+
+🧠 Future Enhancements
+Convert YAMLs to Helm Charts
+
+Add HTTPS via Ingress + cert-manager
+
+Push images to AWS ECR
 
 Automate MongoDB backups
 
-Add JWT route protection on frontend
+Implement frontend route guards with JWT
 
-Integrate unit/integration tests into pipeline
+Add unit/integration tests in pipeline
 
-Add system architecture diagram
+Include architecture diagram
 
-🧑‍💻 Local Development
+👨‍💻 Local Development
 bash
 Copy
 Edit
@@ -167,22 +184,17 @@ git clone https://github.com/SUHEL782/application.com.git
 cd application.com
 docker-compose up --build
 🤝 Contributing
-Contributions are welcome! Feel free to fork, enhance, and submit a pull request.
+Contributions are welcome!
+Fork the repo, create a feature branch, and open a pull request.
 
 📄 License
-This project is licensed under the MIT License.
+Licensed under the MIT License.
 
 👨‍💻 Author
 Suhel Khan
-📍 Uttar Pradesh (Lucknow)
+📍 Lucknow, Uttar Pradesh
 📧 workwithsuhel@gmail.com
 📞 +91 8931004042
 🌐 Portfolio
 🔗 LinkedIn
 💻 GitHub
-
-Built with ❤️ using MERN Stack & DevOps Best Practices
-
-yaml
-Copy
-Edit
