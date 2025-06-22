@@ -3,6 +3,53 @@
 A cloud-native, scalable, and secure e-commerce web application built using the MERN stack, fully containerized with Docker, deployed to AWS EKS using Kubernetes, and managed through a robust CI/CD pipeline with Jenkins and Infrastructure as Code (IaC) using Terraform.
 
 ---
+🛠 Common Problems & Solutions
+🐳 Docker
+Problem	Solution
+Container exits immediately	Ensure the main process runs in the foreground.
+Port binding errors	Check for conflicts using docker ps and free up ports.
+Can't connect between containers	Use Docker Compose with proper service names and networks.
+Large image size	Use multi-stage builds and Alpine-based images.
+
+# ☸️ Kubernetes
+Problem	Solution
+CrashLoopBackOff	Check container logs and probe configurations.
+ImagePullBackOff	Verify image name, tag, and Docker registry credentials.
+Pending pods	Check node capacity or scheduling constraints.
+DNS issues	Ensure CoreDNS is running and correctly configured.
+Node Not Ready	Check EKS worker config, IAM roles, and node health.
+
+🔧 Terraform
+Problem	Solution
+Resource exists already	Use terraform import or terraform state rm.
+Inconsistent state in team	Use remote backend with state locking (S3 + DynamoDB).
+terraform destroy deletes important infra	Use prevent_destroy = true on critical resources.
+
+🧪 Jenkins CI/CD
+Problem	Solution
+Docker commands fail	Ensure Jenkins agent has Docker installed and socket access.
+Webhooks not triggering	Verify GitHub webhook settings and Jenkins endpoint availability.
+Env variables missing	Set them in pipeline or Jenkins system config.
+
+#🧩 App-Level (React, Node, MongoDB)
+Problem	Solution
+CORS errors	Enable cors in Express backend with correct origin.
+MongoDB connection fails	Ensure MongoDB is accessible via correct URI or service.
+JWT expires too soon	Extend expiry time and implement refresh tokens.
+React app not loading on refresh	Configure fallback routes for React Router.
+
+# 📊 Monitoring & Logging
+Problem	Solution
+No data in Grafana	Ensure Prometheus is scraping the right targets.
+CloudWatch logs missing	Check FluentBit config and IAM permissions.
+Log clutter	Use log levels (info, warn, error) and structured logs.
+
+# 🔐 Security & Networking
+Problem	Solution
+JWT easily decoded	Use strong secrets and rotate regularly.
+MongoDB exposed	Keep MongoDB behind internal services only.
+HTTPS not working	Configure cert-manager and Ingress properly.
+Secrets in code	Use Kubernetes Secrets or Sealed Secrets instead of plaintext.
 
 ## 🚀 Project Overview
 
@@ -153,53 +200,7 @@ Stream logs to stdout/stderr only
 
 Watch resource usage to avoid memory leaks
 
-🛠 Common Problems & Solutions
-🐳 Docker
-Problem	Solution
-Container exits immediately	Ensure the main process runs in the foreground.
-Port binding errors	Check for conflicts using docker ps and free up ports.
-Can't connect between containers	Use Docker Compose with proper service names and networks.
-Large image size	Use multi-stage builds and Alpine-based images.
 
-☸️ Kubernetes
-Problem	Solution
-CrashLoopBackOff	Check container logs and probe configurations.
-ImagePullBackOff	Verify image name, tag, and Docker registry credentials.
-Pending pods	Check node capacity or scheduling constraints.
-DNS issues	Ensure CoreDNS is running and correctly configured.
-Node Not Ready	Check EKS worker config, IAM roles, and node health.
-
-🔧 Terraform
-Problem	Solution
-Resource exists already	Use terraform import or terraform state rm.
-Inconsistent state in team	Use remote backend with state locking (S3 + DynamoDB).
-terraform destroy deletes important infra	Use prevent_destroy = true on critical resources.
-
-🧪 Jenkins CI/CD
-Problem	Solution
-Docker commands fail	Ensure Jenkins agent has Docker installed and socket access.
-Webhooks not triggering	Verify GitHub webhook settings and Jenkins endpoint availability.
-Env variables missing	Set them in pipeline or Jenkins system config.
-
-🧩 App-Level (React, Node, MongoDB)
-Problem	Solution
-CORS errors	Enable cors in Express backend with correct origin.
-MongoDB connection fails	Ensure MongoDB is accessible via correct URI or service.
-JWT expires too soon	Extend expiry time and implement refresh tokens.
-React app not loading on refresh	Configure fallback routes for React Router.
-
-📊 Monitoring & Logging
-Problem	Solution
-No data in Grafana	Ensure Prometheus is scraping the right targets.
-CloudWatch logs missing	Check FluentBit config and IAM permissions.
-Log clutter	Use log levels (info, warn, error) and structured logs.
-
-# 🔐 Security & Networking
-Problem	Solution
-JWT easily decoded	Use strong secrets and rotate regularly.
-MongoDB exposed	Keep MongoDB behind internal services only.
-HTTPS not working	Configure cert-manager and Ingress properly.
-Secrets in code	Use Kubernetes Secrets or Sealed Secrets instead of plaintext.
 
 🤝 Contributing
 Contributions are welcome! Fork the repo, create a feature branch, and submit a PR.
