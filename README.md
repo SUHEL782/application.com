@@ -14,10 +14,10 @@ Monitor Resource Usage:
 Pay attention to resource consumption to prevent issues caused by resource exhaustion. 
 Ensure Graceful Shutdown:
 Implement a mechanism for your containers to handle termination signals gracefully when the pod is being deleted. 
+---
 #Container management
 To effectively manage Docker containers, you can utilize the Docker CLI for tasks like starting, stopping, and inspecting containers, as well as managing images, networks, and volumes. Additionally, Docker Compose simplifies the management of multi-container applications by defining and orchestrating them using a YAML file
 ---
-
 ## 🚀 Project Overview
 
 - 🔁 End-to-end **CI/CD pipeline** with Jenkins & GitHub
