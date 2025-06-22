@@ -68,7 +68,6 @@ Edit
 
 Provision infrastructure components:
 
-```bash
 cd terraform/
 terraform init
 terraform apply
@@ -83,8 +82,8 @@ AWS EKS cluster and worker nodes
 IAM roles and policies
 
 Elastic Load Balancer
-
-☸️ Kubernetes Deployment
+----
+#☸️ Kubernetes Deployment
 Apply K8s manifests:
 
 bash
@@ -195,7 +194,7 @@ No data in Grafana	Ensure Prometheus is scraping the right targets.
 CloudWatch logs missing	Check FluentBit config and IAM permissions.
 Log clutter	Use log levels (info, warn, error) and structured logs.
 
-🔐 Security & Networking
+# 🔐 Security & Networking
 Problem	Solution
 JWT easily decoded	Use strong secrets and rotate regularly.
 MongoDB exposed	Keep MongoDB behind internal services only.
@@ -204,9 +203,7 @@ Secrets in code	Use Kubernetes Secrets or Sealed Secrets instead of plaintext.
 
 🤝 Contributing
 Contributions are welcome! Fork the repo, create a feature branch, and submit a PR.
-
-📄 License
-This project is licensed under the MIT License.
+------
 
 👨‍💻 Author
 Suhel Khan
