@@ -18,39 +18,39 @@ ImagePullBackOff	Verify image name, tag, and Docker registry credentials.
 Pending pods	Check node capacity or scheduling constraints.
 DNS issues	Ensure CoreDNS is running and correctly configured.
 Node Not Ready	Check EKS worker config, IAM roles, and node health.
-
+-----
 🔧 Terraform
 Problem	Solution
 Resource exists already	Use terraform import or terraform state rm.
 Inconsistent state in team	Use remote backend with state locking (S3 + DynamoDB).
 terraform destroy deletes important infra	Use prevent_destroy = true on critical resources.
-
+-----
 🧪 Jenkins CI/CD
 Problem	Solution
 Docker commands fail	Ensure Jenkins agent has Docker installed and socket access.
 Webhooks not triggering	Verify GitHub webhook settings and Jenkins endpoint availability.
 Env variables missing	Set them in pipeline or Jenkins system config.
-
+------
 #🧩 App-Level (React, Node, MongoDB)
 Problem	Solution
 CORS errors	Enable cors in Express backend with correct origin.
 MongoDB connection fails	Ensure MongoDB is accessible via correct URI or service.
 JWT expires too soon	Extend expiry time and implement refresh tokens.
 React app not loading on refresh	Configure fallback routes for React Router.
-
+------
 # 📊 Monitoring & Logging
 Problem	Solution
 No data in Grafana	Ensure Prometheus is scraping the right targets.
 CloudWatch logs missing	Check FluentBit config and IAM permissions.
 Log clutter	Use log levels (info, warn, error) and structured logs.
-
+---------
 # 🔐 Security & Networking
 Problem	Solution
 JWT easily decoded	Use strong secrets and rotate regularly.
 MongoDB exposed	Keep MongoDB behind internal services only.
 HTTPS not working	Configure cert-manager and Ingress properly.
 Secrets in code	Use Kubernetes Secrets or Sealed Secrets instead of plaintext.
-
+----------
 ## 🚀 Project Overview
 
 - ✅ End-to-end CI/CD pipeline with **Jenkins & GitHub**
