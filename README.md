@@ -1,18 +1,18 @@
 # 🛒 MERN E-commerce with DevOps on AWS
 
-A production-ready, cloud-native e-commerce web application built with the MERN stack. Fully containerized using Docker, deployed to AWS EKS with Kubernetes, and managed via a CI/CD pipeline using Jenkins and Infrastructure as Code (Terraform). Includes monitoring, logging, and security best practices.
+A cloud-native, scalable, and secure e-commerce web application built using the MERN stack, fully containerized with Docker, deployed to AWS EKS using Kubernetes, and managed through a robust CI/CD pipeline with Jenkins and Infrastructure as Code (IaC) using Terraform.
 
 ---
 
 ## 🚀 Project Overview
 
-- ✅ CI/CD pipeline via **Jenkins** & **GitHub**
-- 🐳 Fully containerized with **Docker**
-- ☸️ Kubernetes deployment on **AWS EKS**
-- 🧰 Infra provisioning using **Terraform**
-- 📊 Monitoring via **Prometheus** & **Grafana**
-- 📥 Logging with **AWS CloudWatch**
-- 🔐 Secure **JWT**-based authentication
+- ✅ End-to-end CI/CD pipeline with **Jenkins & GitHub**
+- 🐳 Fully containerized **frontend/backend using Docker**
+- ☸️ **Kubernetes** deployment on **AWS EKS**
+- 🧰 Infrastructure provisioning with **Terraform**
+- 📊 Monitoring using **Prometheus & Grafana**
+- 📥 Centralized logging with **AWS CloudWatch**
+- 🔐 Secure login/signup with **JWT Authentication**
 
 ---
 
@@ -33,48 +33,6 @@ A production-ready, cloud-native e-commerce web application built with the MERN 
 
 ---
 
-## 🛠 Common Problems & Solutions
-
-### 🔧 Docker
-- **Problem:** Container fails on startup  
-  **Solution:** Check logs using `docker logs <container_id>` and ensure ports/env variables are correctly set.
-
-- **Problem:** Docker network issues in multi-container setups  
-  **Solution:** Use `docker-compose` to define networks explicitly.
-
-### 🔧 Kubernetes
-- **Problem:** Pods crash repeatedly  
-  **Solution:** Use `kubectl describe pod <pod-name>` to check `Events`, and add **Liveness/Readiness probes**.
-
-- **Problem:** Service not accessible externally  
-  **Solution:** Use **LoadBalancer** service type or configure **Ingress Controller** with external DNS.
-
-### 🔧 Terraform
-- **Problem:** Resource already exists error  
-  **Solution:** Run `terraform import` or clean state with `terraform state rm`.
-
-- **Problem:** AWS rate limits  
-  **Solution:** Use `retryable_errors` and backoff settings in provider block.
-
-### 🔧 Jenkins CI/CD
-- **Problem:** Jenkinsfile fails at Docker build  
-  **Solution:** Ensure Docker is installed on Jenkins agent and Docker socket is accessible.
-
-- **Problem:** Environment variables not set  
-  **Solution:** Use `withCredentials` or set them in Jenkins pipeline config properly.
-
----
-
-## 🖼️ UI Snapshots
-
-- 🔐 Signup Page  
-- 🔓 Login Page  
-- 🏠 Homepage  
-
-(*Located in the `images/` folder*)
-
----
-
 ## 📁 Project Structure
 
 .
@@ -82,9 +40,9 @@ A production-ready, cloud-native e-commerce web application built with the MERN 
 ├── backend/ # Express backend API
 ├── docker/ # Dockerfiles
 ├── k8s/ # Kubernetes manifests
-├── terraform/ # Infrastructure as Code
-├── Jenkinsfile # CI/CD pipeline config
-├── images/ # UI Screenshots
+├── terraform/ # Infrastructure definitions
+├── Jenkinsfile # Jenkins pipeline config
+├── images/ # Screenshots (UI)
 └── README.md # Project documentation
 
 yaml
@@ -98,36 +56,36 @@ Edit
 - **Source Control:** GitHub  
 - **CI/CD Tool:** Jenkins
 
-### Pipeline Flow:
-1. GitHub push triggers Jenkins
-2. Build Docker images (frontend/backend)
-3. Push to Docker Hub / AWS ECR
-4. Deploy to EKS using `kubectl`
+### Flow:
+1. Code pushed to GitHub triggers Jenkins pipeline.
+2. Jenkins builds Docker images.
+3. Pushes images to Docker Hub or AWS ECR.
+4. Deploys the app to AWS EKS using `kubectl`.
 
 ---
 
-## ☁️ Infrastructure Setup with Terraform
+## ☁️ Infrastructure Provisioning with Terraform
 
-Provision the infrastructure:
+Provision infrastructure components:
 
 ```bash
 cd terraform/
 terraform init
 terraform apply
-Resources Created:
+Resources:
 
-VPC with subnets
+VPC with public/private subnets
 
-EC2 (Jenkins, MongoDB optional)
+EC2 instance for Jenkins (and optionally MongoDB)
 
-EKS Cluster + Nodes
+AWS EKS cluster and worker nodes
 
-IAM Roles, Security Groups
+IAM roles and policies
 
-Load Balancer
+Elastic Load Balancer
 
 ☸️ Kubernetes Deployment
-Deploy app components to AWS EKS:
+Apply K8s manifests:
 
 bash
 Copy
@@ -138,63 +96,124 @@ kubectl apply -f backend-deployment.yaml
 kubectl apply -f frontend-deployment.yaml
 📊 Monitoring & Logging
 Tool	Purpose
-Prometheus	Metrics collection from pods
-Grafana	Metric visualization dashboards
-AWS CloudWatch	Centralized logs from containers
+Prometheus	Scrapes metrics from Kubernetes
+Grafana	Visualizes application metrics
+AWS CloudWatch	Collects and stores logs from services
 
-Dashboards:
+Dashboards Show:
 
 CPU/Memory usage
 
-Pod health & availability
+Request latency
 
-HTTP request latency
+Pod health
 
-♻️ Container Management Best Practices
-Probes: Use Liveness & Readiness probes
+Replica counts
 
-Restart Policies: Define restartPolicy: Always or suitable config
+🔐 Security
+JWT-based authentication with Bcrypt-hashed passwords
 
-Logs: Use stdout and stderr for all logs
+Environment secrets stored using Kubernetes Secrets
 
-Monitoring: Watch pod resource limits to avoid OOM kills
+Security groups, IAM roles, and VPC for network isolation
 
-Shutdown Handling: Gracefully capture SIGTERM in backend
+Plans for enabling HTTPS using Ingress and cert-manager
 
 🧠 Future Enhancements
-Convert YAMLs to Helm Charts
+Convert manifests to Helm Charts
 
-Add HTTPS via Ingress + cert-manager
+Enable HTTPS with Ingress + cert-manager
 
 Push images to AWS ECR
 
 Automate MongoDB backups
 
-Implement frontend route guards with JWT
+Add frontend route protection with JWT
 
-Add unit/integration tests in pipeline
+Integrate tests into CI/CD
 
-Include architecture diagram
+Add architecture diagrams using Mermaid or draw.io
 
-👨‍💻 Local Development
+🧪 Local Development
+Run locally using Docker Compose:
+
 bash
 Copy
 Edit
 git clone https://github.com/SUHEL782/application.com.git
 cd application.com
 docker-compose up --build
+🧰 Container Best Practices
+Use Liveness/Readiness Probes in Kubernetes
+
+Enable restartPolicy: Always for resilience
+
+Gracefully handle SIGTERM in backend
+
+Stream logs to stdout/stderr only
+
+Watch resource usage to avoid memory leaks
+
+🛠 Common Problems & Solutions
+🐳 Docker
+Problem	Solution
+Container exits immediately	Ensure the main process runs in the foreground.
+Port binding errors	Check for conflicts using docker ps and free up ports.
+Can't connect between containers	Use Docker Compose with proper service names and networks.
+Large image size	Use multi-stage builds and Alpine-based images.
+
+☸️ Kubernetes
+Problem	Solution
+CrashLoopBackOff	Check container logs and probe configurations.
+ImagePullBackOff	Verify image name, tag, and Docker registry credentials.
+Pending pods	Check node capacity or scheduling constraints.
+DNS issues	Ensure CoreDNS is running and correctly configured.
+Node Not Ready	Check EKS worker config, IAM roles, and node health.
+
+🔧 Terraform
+Problem	Solution
+Resource exists already	Use terraform import or terraform state rm.
+Inconsistent state in team	Use remote backend with state locking (S3 + DynamoDB).
+terraform destroy deletes important infra	Use prevent_destroy = true on critical resources.
+
+🧪 Jenkins CI/CD
+Problem	Solution
+Docker commands fail	Ensure Jenkins agent has Docker installed and socket access.
+Webhooks not triggering	Verify GitHub webhook settings and Jenkins endpoint availability.
+Env variables missing	Set them in pipeline or Jenkins system config.
+
+🧩 App-Level (React, Node, MongoDB)
+Problem	Solution
+CORS errors	Enable cors in Express backend with correct origin.
+MongoDB connection fails	Ensure MongoDB is accessible via correct URI or service.
+JWT expires too soon	Extend expiry time and implement refresh tokens.
+React app not loading on refresh	Configure fallback routes for React Router.
+
+📊 Monitoring & Logging
+Problem	Solution
+No data in Grafana	Ensure Prometheus is scraping the right targets.
+CloudWatch logs missing	Check FluentBit config and IAM permissions.
+Log clutter	Use log levels (info, warn, error) and structured logs.
+
+🔐 Security & Networking
+Problem	Solution
+JWT easily decoded	Use strong secrets and rotate regularly.
+MongoDB exposed	Keep MongoDB behind internal services only.
+HTTPS not working	Configure cert-manager and Ingress properly.
+Secrets in code	Use Kubernetes Secrets or Sealed Secrets instead of plaintext.
+
 🤝 Contributing
-Contributions are welcome!
-Fork the repo, create a feature branch, and open a pull request.
+Contributions are welcome! Fork the repo, create a feature branch, and submit a PR.
 
 📄 License
-Licensed under the MIT License.
+This project is licensed under the MIT License.
 
 👨‍💻 Author
 Suhel Khan
-📍 Lucknow, Uttar Pradesh
+📍 Uttar Pradesh, Lucknow
 📧 workwithsuhel@gmail.com
 📞 +91 8931004042
 🌐 Portfolio
 🔗 LinkedIn
 💻 GitHub
+
