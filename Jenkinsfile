@@ -6,7 +6,7 @@ pipeline {
                 echo "Cloning the code from GitHub..."
                 git url: "https://github.com/SUHEL782/application.com.git", branch: "main"
                 sh "whoami"
-                sh "docker build -t bankapp ."
+                sh "docker build -t e-app ."
             }
         }
         stage("build") {
