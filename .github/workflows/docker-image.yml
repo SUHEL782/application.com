@@ -18,19 +18,19 @@ jobs:
       - name: Install dependencies
         run: |
           npm install
-        working-directory: ./src # assuming React app is in "client" directory
+        working-directory: ./mern/front-end-integration/src
 
       - name: Build React app
         run: |
           npm run build
-        working-directory: ./src
+        working-directory: ./mern/front-end-integration/src
 
       - name: Install server dependencies
         run: |
           npm install
-        working-directory: ./app # assuming backend is in "server" directory
+        working-directory: ./mern/Back-end-Integration/app # assuming backend is in "server" directory
 
       - name: Run backend tests (if available)
         run: |
           npm test || echo "No backend tests found"
-        working-directory: ./app
+        working-directory: ./mern/Back-end-Integration/app
