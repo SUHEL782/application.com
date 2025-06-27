@@ -48,6 +48,11 @@ Problem	Solution
 No data in Grafana	Ensure Prometheus is scraping the right targets.
 CloudWatch logs missing	Check FluentBit config and IAM permissions.
 Log clutter	Use log levels (info, warn, error) and structured logs.
+---
+## 📊 Monitoring Stack
+
+![Monitoring and Observability Stack](./Stack-Architech.gif)
+
 ---------
 # 🔐 Security & Networking
 Problem	Solution
