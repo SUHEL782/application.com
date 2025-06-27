@@ -1,6 +1,11 @@
 # 🛒 MERN E-commerce with DevOps on AWS
 
 A cloud-native, scalable, and secure e-commerce web application built using the MERN stack, fully containerized with Docker, deployed to AWS EKS using Kubernetes, and managed through a robust CI/CD pipeline with Jenkins and Infrastructure as Code (IaC) using Terraform.
+----
+## ☸️ Kubernetes Architecture
+
+![Kubernetes Architecture](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*YF6kkF3Ka4evvP8WMy2-mA.png)
+
 
 ---
 ## 📊 Prometheus Architecture
