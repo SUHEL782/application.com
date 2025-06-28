@@ -1,4 +1,4 @@
-name: Pro Github Actions #testing add own actual path
+name: Pro Github Actions 
 
 on: [push, pull_request]
 
