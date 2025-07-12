@@ -1,0 +1,95 @@
+---
+- name: Deploy Node.js and React.js application
+  hosts: all
+  become: true
+
+  vars:
+    node_version: "18.x"
+    app_dir: /opt/myapp
+    backend_repo: "http"
+    frontend_repo: "https"
+
+  tasks:
+    - name: Update APT cache
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: Install required packages
+      apt:
+        name:
+          - curl
+          - git
+          - build-essential
+          - nginx  # Optional: for reverse proxy
+        state: present
+
+    - name: Add Node.js APT repository
+      shell: |
+        curl -fsSL https://deb.nodesource.com/setup_{{ node_version }} | bash -
+      args:
+        executable: /bin/bash
+
+    - name: Install Node.js
+      apt:
+        name: nodejs
+        state: present
+
+    - name: Install PM2 globally
+      npm:
+        name: pm2
+        global: yes
+
+    - name: Clone backend repository
+      git:
+        repo: "{{ backend_repo }}"
+        dest: "{{ app_dir }}/backend"
+        version: main
+
+    - name: Install backend dependencies
+      npm:
+        path: "{{ app_dir }}/backend"
+        state: present
+
+    - name: Start backend with PM2
+      command: pm2 start index.js --name backend
+      args:
+        chdir: "{{ app_dir }}/backend"
+      register: backend_pm2
+
+    - name: Clone frontend repository
+      git:
+        repo: "{{ frontend_repo }}"
+        dest: "{{ app_dir }}/frontend"
+        version: main
+
+    - name: Install frontend dependencies
+      npm:
+        path: "{{ app_dir }}/frontend"
+        state: present
+
+    - name: Build React frontend
+      command: npm run build
+      args:
+        chdir: "{{ app_dir }}/frontend"
+
+    - name: Serve frontend using serve (Optional)
+      npm:
+        name: serve
+        global: yes
+
+    - name: Start frontend with PM2
+      command: pm2 serve build 3000 --name frontend
+      args:
+        chdir: "{{ app_dir }}/frontend"
+
+    - name: Save PM2 process list
+      command: pm2 save
+
+    - name: Configure PM2 to start on boot
+      command: pm2 startup systemd
+      register: pm2_startup
+
+    - name: Execute PM2 startup script
+      command: "{{ pm2_startup.stdout }}"
+      when: pm2_startup.stdout is defined
